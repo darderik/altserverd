@@ -46,3 +46,16 @@ You can use this repo with **[powenn/AltServer-Linux-ShellScript](https://github
 - https://github.com/NyaMisty/AltServer-Linux @NyaMisty
 - https://github.com/Dadoum/Provision @Dadoum
 - https://github.com/jkcoxson/netmuxd @jkcoxson
+
+
+
+
+
+## Darderik adds
+- Can avahi-daemon be executed outside the docker? (systemctl doesn't work thus starting avahi on startup it's not possible) Yes it can. I'm running avahi-daemon outside docker on the main host
+- Usbmuxd and netmuxd can coexists? On ARM64 they seem to work
+- Run daemon and let it build, then plug your phone and authorize (usbmuxd and netmuxd running together )
+- Wipe your /var/lib/lockdown if everything is working shit (Usbmuxd keys are in this folder, heartbeat error could be related to screwed plists)
+- on a Pine64 the usbmuxd docker image + altserver + netmuxd spent 5 hours to compile everything for the first time (got sick of prebuilt packages in repos)
+- config is no longer needed
+

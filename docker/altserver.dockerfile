@@ -29,6 +29,10 @@ RUN git clone https://github.com/nih-at/libzip && cd libzip; mkdir build; cd bui
 
 # Build altserver
 WORKDIR /buildenv/altserver
-RUN git clone --recursive https://github.com/NyaMisty/AltServer-Linux -b v0.0.5 .
-RUN mkdir build
+RUN git clone --recursive https://github.com/NyaMisty/AltServer-Linux
+RUN cd AltServer-Linux && make
+
+
+
+
 # RUN mkdir build && make && mv ./AltServer-* ./altserver

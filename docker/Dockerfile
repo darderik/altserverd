@@ -1,12 +1,13 @@
-FROM ubuntu
-
-WORKDIR /app
-
+FROM usbmuxd
+##AltServer part
 RUN apt-get update -yy && \
     apt-get install -yy \
-        avahi-daemon avahi-discover avahi-utils libnss-mdns \
-        iputils-ping dnsutils
-
-RUN sed -i 's/.*enable-dbus=.*/enable-dbus=no/' /etc/avahi/avahi-daemon.conf
-
-RUN apt-get update && apt-get install -y usbmuxd curl usbutils iproute2 libimobiledevice-utils libavahi-compat-libdnssd-dev
+    libnss-mdns \
+    iputils-ping dnsutils ideviceinstaller libavahi-client-dev libavahi-compat-libdnssd-dev libavahi-client-dev  avahi-discover avahi-utils 
+#avahi-daemon 
+RUN apt-get install -y curl usbutils iproute2 
+#RUN sed -i 's/.*enable-dbus=.*/enable-dbus=no/' /etc/avahi/avahi-daemon.conf
+RUN mkdir /app
+WORKDIR /app
+COPY ./run.sh .
+ENTRYPOINT ["/bin/bash"]
