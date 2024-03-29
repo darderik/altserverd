@@ -8,12 +8,12 @@ WORKDIR /buildenv
 
 # Build corecrypto
 RUN curl -JO 'https://developer.apple.com/file/?file=security&agree=Yes' -H 'Referer: https://developer.apple.com/security/' && unzip corecrypto.zip
-WORKDIR /buildenv/corecrypto
+WORKDIR /buildenv/corecrypto-2023
 
 # Needed for script-coverage (Line 29 of corecrypto cmake)
 RUN git clone https://github.com/StableCoder/cmake-scripts scripts
 RUN mkdir build; cd build; CC=clang CXX=clang++ cmake ..;
-WORKDIR /buildenv/corecrypto/build
+WORKDIR /buildenv/corecrypto-2023/build
 RUN sed -i -E 's|^(all: CMakeFiles\/corecrypto_perf)|#\1|' CMakeFiles/Makefile2; sed -i -E 's|^(all: CMakeFiles\/corecrypto_test)|#\1|' CMakeFiles/Makefile2
 RUN make; make install
 
