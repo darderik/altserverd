@@ -40,5 +40,8 @@ RUN mkdir -p /output/ \
     && cp target/release/netmuxd /output/netmuxd-zeroconf \
     && cargo build --release \
     && cp target/release/netmuxd /output/netmuxd-mdns
+##COMPILING IS BROKE, GET PREBUILT BINARY (YEAH ALL OF THIS IS USELESS) ARM PINE64
+RUN wget https://github.com/darderik/altserverd/raw/a5c75dfe858ff4fa02226e6d12b58b00e013139d/bin/netmuxd-zeroconf -O /output/netmuxd-zeroconf
 
-ENTRYPOINT [ "/bin/sh" ]
+
+ENTRYPOINT [ "/bin/bash" ]
